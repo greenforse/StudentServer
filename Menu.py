@@ -42,6 +42,11 @@ class Menu(MenuItem):
         self.item.append(subMenu)
         return subMenu
 
+    def addControllerSubMenu(self, subMenu):
+        self.item.append(subMenu)
+        subMenu.is_submenu = True
+        return subMenu
+
     def select(self):
         self.run = True
         n = int(input("Введите пункт меню: ")) - 1

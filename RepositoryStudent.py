@@ -13,10 +13,8 @@ class RepositoryStudent(metaclass=Singleton):
         self.conn = m.conn
         
     def createList(self):
-        self.cur.execute("SELECT* FROM student")
-        list = self.cur.fetchall()
-        for i in list:
-            print(i)
+        self.cur.execute("SELECT* FROM student") 
+        return self.cur.fetchall()
 
     #def printList(self):
     #    #self.createList()
@@ -26,68 +24,46 @@ class RepositoryStudent(metaclass=Singleton):
     #def connect(self):
     #    self.cur = m.conn.cursor()
         
-    def delete(self):
-        self.createList()
-        id = int(input("Введите ид студента для удаления: "))
+    def delete(self, id):
         sql = ("DELETE FROM student WHERE id = %s")
         self.cur.execute(sql, [id])
         self.conn.commit()
 
-    def editMName(self):
-        newMName = input("Введите новое отчество: ")
-        id = Edit_context().save[0][0]
+    def editMName(self, newMName, id):
         sql = ("UPDATE student SET m_name = %s WHERE id=%s;")
         self.cur.execute(sql, [newMName, id])
         self.conn.commit()
-        self.refreshBeforeEdit()
+        #self.refreshBeforeEdit()
 
-    def editLName(self):
-        newLName = input("Введите новую фамилию: ")
-        id = Edit_context().save[0][0]
+    def editLName(self, newLName, id):
         sql = ("UPDATE student SET s_name = %s WHERE id=%s;")
         self.cur.execute(sql, [newLName, id])
         self.conn.commit()
-        self.refreshBeforeEdit()
 
-    def SelectCommand(self):
-        self.createList()
-        select = False
-        while select == False:
-            selectNumber = int(input("Введите номер пользователя"))
-            try:
-                sql = ("Select* FROM student WHERE id = %s ;")
-                self.cur.execute(sql, [selectNumber])
-                data = self.cur.fetchall()
-                Edit_context().save = data
-                select = True
-            except:
-                print("Такого пользователя нет")
+    def SelectCommand(self, selectNumber):
+        sql = ("Select* FROM student WHERE id=%s ;")
+        self.cur.execute(sql, [selectNumber])
+        otvet = self.cur.fetchall()
+        return otvet
 
-    def ShowCommand(self):
-        print(Edit_context().save)
+    #def ShowCommand(self):
+    #    print(Edit_context().save)
 
-    def DeselectCommand(self):
-        Edit_context().save = None
+    #def DeselectCommand(self):
+    #    Edit_context().save = None
 
-    def editFName(self):
-        newFName = input("Введите Новое Имя")
-        id = Edit_context().save[0][0]
+    def editFName(self, newFName, id):
         sql = ("UPDATE student SET f_name = %s WHERE id=%s;")
         self.cur.execute(sql, [newFName, id])
         self.conn.commit()
-        self.refreshBeforeEdit()
 
-    def refreshBeforeEdit(self):
+    def refreshBeforeEdit(self, id):
         sql = ("SELECT* FROM student WHERE id =%s")
-        self.cur.execute(sql, [Edit_context().save[0][0]])
-        Edit_context().save = self.cur.fetchall()
+        self.cur.execute(sql, id)
+        return self.cur.fetchall()
 
-    def add(self):
-        id = int(input("id: "))
-        firstName = str(input("Введите Name: "))
-        secondName = input("Введите фамилию: ")
-        lastName = input("Введите отчество: ")
-        groupId = input("Введите группу студента: ")
+
+    def add(self, id, firstName, secondName, lastName, groupId):
         sql = ("INSERT INTO student (id,f_name, s_name, m_name,group_id) VALUES (%s, %s, %s, %s,%s);")
         self.cur.execute(sql, [id, firstName, secondName, lastName,groupId])
         self.conn.commit()
