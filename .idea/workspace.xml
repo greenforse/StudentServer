@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80a338b8-ca8b-4463-8f2f-0ca0bd1e676e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GroupController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeacherController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TeacherRepository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepositoryGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryGroup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RepositoryStudent.py" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryStudent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentController.py" beforeDir="false" afterPath="$PROJECT_DIR$/StudentController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

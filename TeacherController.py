@@ -1,11 +1,13 @@
 from Edit_context import Edit_context
 from Menu import Menu
 
-class StudentController:
-    def __init__(self, repository, oneName, moreName):
-        #self.tableName = tableName
-        self.oneName = oneName
-        self.moreName = moreName
+
+class TeacherController:
+
+    def __init__(self, repository):
+        # self.tableName = tableName
+        self.oneName = "teacher"
+        self.moreName = "teachers"
         self.repository = repository
 
     def printList(self):
@@ -17,7 +19,7 @@ class StudentController:
         id = int(input(f"Inter  delete {self.oneName}Id: "))
         self.repository.delete(id)
 
-    def editMName (self):
+    def editMName(self):
         newMName = input("Введите новое отчество: ")
         id = Edit_context().save[0][0]
         self.repository.editMName(newMName, id)
@@ -40,8 +42,9 @@ class StudentController:
         firstName = str(input("Введите Name: "))
         secondName = input("Введите фамилию: ")
         lastName = input("Введите отчество: ")
-        groupId = input("Введите группу студента: ")
-        self.repository.add(id, firstName, secondName, lastName, groupId)
+        kafedraID = input("Введите кафедру: ")
+        academicDegree = input("Введите ученую сткпень: ")
+        self.repository.add(id, firstName, secondName, lastName, kafedraID, academicDegree)
 
     def SelectCommand(self):
         self.printList()
@@ -58,27 +61,32 @@ class StudentController:
         print(Edit_context().save)
 
     def createMenu(self):
-        studMenu = Menu("Студенты", 1, True)
-        studMenu.additem(1, "Список студентов", self.printList)
-        AddStud = studMenu.additem(2, "Добавить студента", self.add)
-        studMenu.additem(3, "Удалить пользователя", self.delete)
+        studMenu = Menu("Учителя", 1, True)
+        studMenu.additem(1, "Список Учителей", self.printList)
+        AddStud = studMenu.additem(2, "Добавить учителя", self.add)
+        studMenu.additem(3, "Удалить учителя", self.delete)
         ####
-        editStudents = studMenu.addSubMenu("Редактировать пользователя", 4)
+        editStudents = studMenu.addSubMenu("Редактировать учителя", 4)
         editStudents.set_startup_command(self.SelectCommand)
         editStudents.set_before_select_command(self.ShowCommand)
         editStudents.set_tear_down_command(self.DeselectCommand)
         editStudents.additem(1, "Изменить фамилию", self.editFName)
         editStudents.additem(2, "Изменить имя", self.editLName)
-        editStudents.additem(2, "Изменить Отчество", self.editMName)
+        editStudents.additem(3, "Изменить Отчество", self.editMName)
+        editStudents.additem(3, "Изменить kafedry", self.editKafedra)
+        editStudents.additem(3, "Изменить Ученую степень", self.editAcademicDegree)
         return studMenu
 
     def refreshBeforeEdit(self):
-        Edit_context().save = self.repository. refreshBeforeEdit([Edit_context().save[0][0]])
+        Edit_context().save = self.repository.refreshBeforeEdit([Edit_context().save[0][0]])
 
     def DeselectCommand(self):
         Edit_context().save = None
 
-    def printListByGroup(self, group):
-        studentlist = self.repository.createListByGroup(group)
-        for student in studentlist:
-            print(student)
+    def editKafedra(self):
+        kaf = input("Введите новую кафедру: ")
+        self.repository.editKafedra(Edit_context().save[0][0], kaf)
+
+    def editAcademicDegree(self):
+        acad = input("Ввудите новую Ученую степень: ")
+        self.repository.editAcademicDegree(Edit_context().save[0][0], acad)
