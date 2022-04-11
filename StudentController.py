@@ -1,17 +1,21 @@
 from Edit_context import Edit_context
 from Menu import Menu
+from MenuService import MenuService
+from StudentView import StudentView
+
 
 class StudentController:
     def __init__(self, repository, oneName, moreName):
-        #self.tableName = tableName
         self.oneName = oneName
         self.moreName = moreName
         self.repository = repository
+        self.service = MenuService()
+        self.menuService = MenuService()
+
 
     def printList(self):
         list = self.repository.createList()
-        for i in list:
-            print(i)
+        self.menuService.printList(list, StudentView())
 
     def delete(self):
         id = int(input(f"Inter  delete {self.oneName}Id: "))
