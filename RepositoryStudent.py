@@ -62,3 +62,8 @@ class RepositoryStudent:
         sql = ("INSERT INTO student (id,f_name, s_name, m_name,group_id) VALUES (%s, %s, %s, %s,%s);")
         self.cur.execute(sql, [id, firstName, secondName, lastName, groupId])
         self.conn.commit()
+
+    def addToGroup(self,studId, idGroup):
+        sql = ("UPDATE student SET group_id = %s WHERE id=%s;")
+        self.cur.execute(sql, [idGroup, studId])
+        self.conn.commit()

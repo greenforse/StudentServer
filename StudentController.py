@@ -5,11 +5,12 @@ import Views
 
 
 class StudentController:
-    def __init__(self, repository, oneName, moreName):
+    def __init__(self, repository, oneName, moreName,groupController):
         self.oneName = oneName
         self.moreName = moreName
         self.repository = repository
         self.menuService = MenuService()
+        self.groupController = groupController
 
 
     def printList(self):
@@ -73,6 +74,7 @@ class StudentController:
         editStudents.additem(1, "Изменить фамилию", self.editFName)
         editStudents.additem(2, "Изменить имя", self.editLName)
         editStudents.additem(2, "Изменить Отчество", self.editMName)
+        editStudents.additem(2, "Добавить в группу", self.addToGroup)
         return studMenu
 
     def refreshBeforeEdit(self):
@@ -85,3 +87,9 @@ class StudentController:
         studentlist = self.repository.createListByGroup(group)
         for student in studentlist:
             print(student)
+
+    def addToGroup(self):
+        self.groupController.listGroups()
+        groupId= input('Введите группу:')
+        self.repository.addToGroup(Edit_context().save[0][0],groupId,)
+

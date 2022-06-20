@@ -53,3 +53,8 @@ class RepositoryGroup:
         sql = ("SELECT* FROM groups WHERE id =%s")
         self.cur.execute(sql, id)
         return self.cur.fetchall()
+
+    def addToSpec(self,specId,id):
+        sql = ("UPDATE groups SET specialization_id = %s WHERE id=%s;")
+        self.cur.execute(sql, [specId, id])
+        self.conn.commit()

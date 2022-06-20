@@ -3,9 +3,10 @@ from Edit_context import Edit_context
 
 
 class GroupController:
-    def __init__(self, repository, studentController):
+    def __init__(self, repository, studentController = None, specializationController = None ):
         self.repository = repository
         self.studentController = studentController
+        self.specializacionController = specializationController
 
     def listGroups(self):
         list = self.repository.createList()
@@ -53,7 +54,9 @@ class GroupController:
         editStudents.set_tear_down_command(self.DeselectCommand)
         editStudents.additem(1, "Изменить StaroStar", self.editHeadOf)
         editStudents.additem(2, "Изменить Course", self.editCourse)
+        editStudents.additem(2, "Изменить значение специализации", self.addToSpec)
         viewStudentByGroup = studMenu.addSubMenu("Показать студентов в группе", 5)
+
         viewStudentByGroup.set_startup_command(self.SelectCommand)
         viewStudentByGroup.set_before_select_command(self.ShowCommandStudent)
         viewStudentByGroup.set_tear_down_command(self.DeselectCommand)
@@ -78,3 +81,9 @@ class GroupController:
 
     def refreshBeforeEdit(self):
         Edit_context().save = self.repository. refreshBeforeEdit([Edit_context().save[0][0]])
+
+    def addToSpec(self):
+        self.specializacionController.viewList()
+        specid= input("Введите Id специальности")
+        self.repository.addToSpec(specid, Edit_context().save[0][0])
+

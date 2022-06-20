@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80a338b8-ca8b-4463-8f2f-0ca0bd1e676e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MarkController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkRepository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PredmetController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PredmetRepository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpecializacionController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpecializationRepository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuService.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GroupController.py" beforeDir="false" afterPath="$PROJECT_DIR$/GroupController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepositoryGroup.py" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryGroup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepositoryStudent.py" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryStudent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StudentController.py" beforeDir="false" afterPath="$PROJECT_DIR$/StudentController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StudentView.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

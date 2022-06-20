@@ -24,9 +24,10 @@ class Controller:
 
 
     def buildController(self):
+        self.groupController = GroupController(RepositoryGroup(self.conn))
         self.specializationController = SpecializationController(SpecializationRepository(self.conn))
-        self.studController = StudentController(RepositoryStudent(self.conn), "student", "students")
-        self.groupController = GroupController(RepositoryGroup(self.conn), self.studController)
+        self.studController = StudentController(RepositoryStudent(self.conn), "student", "students", self.groupController)
+        self.groupController = GroupController(RepositoryGroup(self.conn), self.studController, self.specializationController)
         self.teachController = TeacherController(TeacherRepository(self.conn))
         self.predmetController = PredmetController(PredmetRepository(self.conn), self.specializationController)
         self.markController = MarkController(MarkRepository(self.conn), self.studController, self.predmetController)
